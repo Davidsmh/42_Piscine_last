@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 18:00:41 by dschwarz          #+#    #+#             */
-/*   Updated: 2018/08/17 00:28:16 by dschwarz         ###   ########.fr       */
+/*   Created: 2018/08/16 16:01:57 by dschwarz          #+#    #+#             */
+/*   Updated: 2018/08/16 16:15:10 by dschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+char	*ft_strlowcase(char *str)
 {
 	int i;
-	int neg;
-	int nb;
 
 	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] <= 32)
-		i++;
-	if ((str[i] == 43 || str[i] == 45) && str[i + 1] >= 48 && str[i + 1] <= 57)
+	while (str[i] != '\0' && str[i] != 0)
 	{
-		if (str[i] == 45)
-			neg = -1;
+		while (str[i] >= 65 && str[i] <= 90)
+		{
+			str[i] = str[i] + 32;
+			i++;
+		}
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
-	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
-	}
-	nb = nb * neg;
-	return (nb);
+	return (str);
 }

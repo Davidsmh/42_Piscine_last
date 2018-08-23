@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 18:00:41 by dschwarz          #+#    #+#             */
-/*   Updated: 2018/08/17 00:28:16 by dschwarz         ###   ########.fr       */
+/*   Created: 2018/08/14 17:06:46 by dschwarz          #+#    #+#             */
+/*   Updated: 2018/08/14 17:58:54 by dschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
-{
-	int i;
-	int neg;
-	int nb;
+int		ft_putchar(char c);
 
-	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] <= 32)
-		i++;
-	if ((str[i] == 43 || str[i] == 45) && str[i + 1] >= 48 && str[i + 1] <= 57)
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
 	{
-		if (str[i] == 45)
-			neg = -1;
-		i++;
+		nb = -nb;
+		ft_putchar('-');
+		if (nb == -2147483648)
+		{
+			ft_putchar('2');
+			nb = 147483648;
+		}
 	}
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
+	if (nb <= 9)
+		ft_putchar(nb + 48);
+	else
 	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
+		ft_putnbr(nb / 10);
+		ft_putchar((nb % 10) + 48);
+		if (nb == -2147483648)
+		{
+			ft_putnbr(nb / 10);
+			ft_putchar((nb % 10) + 48);
+		}
 	}
-	nb = nb * neg;
-	return (nb);
 }

@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 18:00:41 by dschwarz          #+#    #+#             */
-/*   Updated: 2018/08/17 00:28:16 by dschwarz         ###   ########.fr       */
+/*   Created: 2018/08/14 23:30:32 by dschwarz          #+#    #+#             */
+/*   Updated: 2018/08/17 15:47:14 by dschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
-	int neg;
-	int nb;
+	unsigned int i;
 
 	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] <= 32)
-		i++;
-	if ((str[i] == 43 || str[i] == 45) && str[i + 1] >= 48 && str[i + 1] <= 57)
+	while ((i < n) && (src[i] != '\0'))
 	{
-		if (str[i] == 45)
-			neg = -1;
+		dest[i] = src[i];
 		i++;
 	}
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
+	while (i < n)
 	{
-		nb = nb * 10 + (str[i] - 48);
+		dest[i] = '\0';
 		i++;
 	}
-	nb = nb * neg;
-	return (nb);
+	return (dest);
 }

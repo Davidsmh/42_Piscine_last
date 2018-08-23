@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 18:00:41 by dschwarz          #+#    #+#             */
-/*   Updated: 2018/08/17 00:28:16 by dschwarz         ###   ########.fr       */
+/*   Created: 2018/08/16 18:33:33 by dschwarz          #+#    #+#             */
+/*   Updated: 2018/08/16 20:29:27 by dschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+char	*ft_strcat(char *dest, char *src)
 {
-	int i;
-	int neg;
-	int nb;
+	int a;
+	int b;
 
-	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] <= 32)
-		i++;
-	if ((str[i] == 43 || str[i] == 45) && str[i + 1] >= 48 && str[i + 1] <= 57)
+	a = 0;
+	b = 0;
+	while (dest[a] != '\0')
 	{
-		if (str[i] == 45)
-			neg = -1;
-		i++;
+		a++;
 	}
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
+	while (src[b] != '\0')
 	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
+		dest[a + b] = src[b];
+		b++;
 	}
-	nb = nb * neg;
-	return (nb);
+	dest[a + b] = '\0';
+	return (dest);
 }

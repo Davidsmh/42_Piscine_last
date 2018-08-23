@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dschwarz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/14 18:00:41 by dschwarz          #+#    #+#             */
-/*   Updated: 2018/08/17 00:28:16 by dschwarz         ###   ########.fr       */
+/*   Created: 2018/08/15 22:42:07 by dschwarz          #+#    #+#             */
+/*   Updated: 2018/08/16 13:08:31 by dschwarz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int i;
-	int neg;
-	int nb;
+	char *a;
+	char *b;
 
-	i = 0;
-	neg = 1;
-	nb = 0;
-	while (str[i] <= 32)
-		i++;
-	if ((str[i] == 43 || str[i] == 45) && str[i + 1] >= 48 && str[i + 1] <= 57)
+	if (*to_find == 0)
 	{
-		if (str[i] == 45)
-			neg = -1;
-		i++;
+		return (str);
 	}
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
+	while (*str != '\0')
 	{
-		nb = nb * 10 + (str[i] - 48);
-		i++;
+		a = str;
+		b = to_find;
+		while (*a == *b && a != 0 && b != 0)
+		{
+			a++;
+			b++;
+		}
+		if (*b == '\0')
+			return (str);
+		str++;
 	}
-	nb = nb * neg;
-	return (nb);
+	return (0);
 }
