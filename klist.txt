@@ -1,0 +1,7 @@
+Credentials cache: API:C032DF0B-2498-499B-9086-D49A3369D668
+        Principal: dschwarz@42.FR
+
+  Issued                Expires               Principal
+Jul 30 15:49:22 2018  Aug  6 15:49:22 2018  krbtgt/42.FR@42.FR
+Jul 30 15:49:24 2018  Aug  6 15:49:22 2018  ldap/ldap-proxy.42.fr@42.FR
+Jul 30 15:49:24 2018  Aug  6 15:49:22 2018  HTTP/student-storage-2.42.fr@42.FR
